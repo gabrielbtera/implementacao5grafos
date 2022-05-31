@@ -1,3 +1,17 @@
+def defineVizinhos(grafo):
+
+  dic = {}
+  for i in range(len(grafo)):
+    dic [i + 1] = {"Vizinhos": [], "Marcado" : 0}
+    for j in range(len(grafo[i])):
+      
+      if i != j:
+        vertice = j + 1
+        peso = grafo[i][j]
+        if peso != 0:
+            dic[i + 1]["Vizinhos"].append((vertice,  peso))
+  
+  return dic
 
 
 
@@ -12,7 +26,8 @@ def att48_d(arquivo) -> list:
     for distancia in range(tamanhoLista):
       cidade[distancia] = int(cidade[distancia].strip())
 
-  return listaDistancias
+  return  defineVizinhos(listaDistancias)
+
 
 def dantzig42_d(arquivo) -> list:
   
