@@ -12,10 +12,10 @@ def checkInclusao(grafo, qntvertice , posicao, listaCaminho) -> bool:
 
 
 def backTrackingCicloHamiltoniano(grafo, qntVertices, listaCaminho, posicao):
-  print("Aqui")
+  print(posicao, listaCaminho)
 
   if posicao == qntVertices:
-    if grafo[listaCaminho[posicao -1 ]][listaCaminho[0]] == 1:
+    if grafo[listaCaminho[posicao - 1 ]][listaCaminho[0]] == 1:
       return 1
     else:
       return 0
@@ -42,7 +42,7 @@ g2 = [[0, 2, 1, 7, 4], [2, 0, 3, 5, 3], [1, 3, 0, 3, 2], [7, 5, 3, 0, 4], [4, 3,
 def imprimeCicloHamiltoniano(grafo, qntVertices, posicao):
   caminhoHamiltonianio = listaPivot(qntVertices)
   caminhoHamiltonianio[0] = 0
-
+  
   if not backTrackingCicloHamiltoniano(grafo, qntVertices, caminhoHamiltonianio, posicao):
     return 0
   
@@ -54,11 +54,12 @@ def imprimeCicloHamiltoniano(grafo, qntVertices, posicao):
   return caminhoHamiltonianio
 
 def listaPivot(numeroVertices):
-  return [-1] * numeroVertices
-
-# print()
+  
+  return [-1 for i in range(numeroVertices)]
 
 
 def main():
   imprimeCicloHamiltoniano(g2, 5 , 1)
+
+main()
 

@@ -1,6 +1,8 @@
 
-def att48_d() -> list:
-  arquivo = open("att48_d.txt", 'r')
+
+
+
+def att48_d(arquivo) -> list:
 
   listaDistancias = [cadaString.strip().split("      ") for cadaString in arquivo.readlines()]
 
@@ -12,8 +14,8 @@ def att48_d() -> list:
 
   return listaDistancias
 
-def dantzig42_d() -> list:
-  arquivo = open('dantzig42_d.txt')
+def dantzig42_d(arquivo) -> list:
+  
   listaDistancias = [cadaString.strip().split() for cadaString in arquivo.readlines()]
 
   
