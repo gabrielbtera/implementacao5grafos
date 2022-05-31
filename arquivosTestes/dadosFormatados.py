@@ -1,3 +1,9 @@
+'''
+Recebe uma matriz de adjacencias e retorna 
+um dicionario com 
+
+{vertice: {"vizinhos": [...], "Marcado":0/1}
+'''
 def defineVizinhos(grafo):
 
   dic = {}
@@ -14,9 +20,12 @@ def defineVizinhos(grafo):
   return dic
 
 
-
-
-def att48_d(arquivo) -> list:
+'''
+Recebe o arquivo com o me da fonte e retorna 
+um dicionario com 
+{vertice: {"vizinhos": [...], "Marcado":0/1}
+'''
+def att48_d(arquivo) -> dict:
 
   listaDistancias = [cadaString.strip().split("      ") for cadaString in arquivo.readlines()]
 
@@ -28,17 +37,33 @@ def att48_d(arquivo) -> list:
 
   return  defineVizinhos(listaDistancias)
 
-
-def dantzig42_d(arquivo) -> list:
+'''
+Recebe o arquivo com o me da fonte e retorna 
+um dicionario com 
+{vertice: {"vizinhos": [...], "Marcado":0/1}
+'''
+def dantzig42_d(arquivo) -> dict:
   
   listaDistancias = [cadaString.strip().split() for cadaString in arquivo.readlines()]
 
-  
   for cidade in listaDistancias:
     for distancia in range(len(cidade)):
       cidade[distancia] = int(cidade[distancia])
 
-  return listaDistancias
+  return defineVizinhos(listaDistancias)
+
+
+def five_d(arquivo) -> dict:
+  listaDistancias = [cadaString.strip().split() for cadaString in arquivo.readlines()]
+  listaDistancias = listaDistancias[: len(listaDistancias)-1]
+
+  for cidade in listaDistancias:
+    for distancia in range(len(cidade)):
+      cidade[distancia] = int(float(cidade[distancia]))
+
+  return defineVizinhos(listaDistancias)
+
+
 
 
 def grafoTestes():
@@ -57,10 +82,6 @@ def grafoTestes():
 
 
 
-
-def main():
-  # dantzig42_d()
-  grafoTestes()
 
 
 

@@ -63,6 +63,7 @@
 #   imprimeCicloHamiltoniano(g3, 4 , 1)
 
 # # main()
+from time import time
 
 
 
@@ -71,27 +72,21 @@ def vizinhoMinimoPeso(vertice):
     return min(vertice['Vizinhos'], key= lambda x: x[1])
 
 
-def buscaGulosa(graf, inicial):
+def BellmoreNemHauser(graf, inicial) -> tuple:
+    tempoinicio = time()
+
     vertices_grafos = graf.keys()
     marcados = [inicial]
 
-
-    
-    
     minimo = vizinhoMinimoPeso(graf[inicial])
     vertice = minimo[0]
-
-
-    print(graf)
-    print(vertice, minimo)
-
-    # print( graf[vertice]["Vizinhos"])
+    custo = []
 
     while len(marcados) < len(vertices_grafos):
-        
-
         if vertice not in marcados:
             marcados.append(vertice)
+            
+            custo.append(minimo)
 
             minimo = vizinhoMinimoPeso(graf[vertice])
             graf[vertice]["Vizinhos"].remove(minimo)
@@ -103,7 +98,35 @@ def buscaGulosa(graf, inicial):
             minimo = vizinhoMinimoPeso(graf[vertice])
             if minimo[0] in marcados:
                 graf[vertice]["Vizinhos"].remove(minimo)
-            minimo = vizinhoMinimoPeso(graf[vertice])
+                minimo = vizinhoMinimoPeso(graf[vertice])
             vertice = minimo[0]
+
+
+    ateOpenultimo = marcados[:len(marcados)-1]
+
+    minimo = vizinhoMinimoPeso(graf[inicial])
+    vertice = minimo[0]
+    
+    while 1:
+      minimo = vizinhoMinimoPeso(graf[inicial])
+
+      if minimo[0] in ateOpenultimo and minimo in graf[inicial]["Vizinhos"]:
+        graf[inicial]["Vizinhos"].remove(minimo)
+
+      if minimo[0] not in ateOpenultimo:
+        custo.append(minimo)
+        
+        break
+
+      minimo = vizinhoMinimoPeso(graf[inicial])
+      vertice = minimo[0]
+    
+      
     marcados.append(inicial)
-    print(marcados)
+
+    somaCusto = sum(int(valor) for vertice,valor in custo)
+
+    tempo = time()-tempoinicio
+
+    return marcados, somaCusto, tempo
+    
