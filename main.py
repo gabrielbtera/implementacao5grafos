@@ -10,13 +10,12 @@ gr17_d =  open("./arquivosTestes/gr17_d.txt", 'r')
 P01_d = open("./arquivosTestes/P01_d.txt", 'r')
 
 
-
-
 def imprimeResultado(tupla):
   print("Ciclo encontrado: :", tupla[0])
   print("Custo do Ciclo Encontrado: ", tupla[1])
   print("Tempo de execução: ", tupla[2])
   print()
+
 
 
 # t  = 

@@ -10,8 +10,6 @@ def findVertice(grafo, marcados, verticeAtual):
     novalista = [i for i in vizinhos if i[0] not in marcados]
     return vizinhoMinimoPeso(novalista)
 
-
-
 def BellmoreNemHauser(graf, inicial) -> tuple:
     tempoinicio = time()
 
