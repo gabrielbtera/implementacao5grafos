@@ -25,7 +25,7 @@ Recebe o arquivo com o me da fonte e retorna
 um dicionario com 
 {vertice: {"vizinhos": [...], "Marcado":0/1}
 '''
-def att48_d(arquivo) -> dict:
+def att48_d(arquivo):
 
   listaDistancias = [cadaString.strip().split("      ") for cadaString in arquivo.readlines()]
 
@@ -35,7 +35,7 @@ def att48_d(arquivo) -> dict:
     for distancia in range(tamanhoLista):
       cidade[distancia] = int(cidade[distancia].strip())
 
-  return  defineVizinhos(listaDistancias)
+  return  defineVizinhos(listaDistancias), listaDistancias
 
 '''
 Recebe o arquivo com o me da fonte e retorna 
@@ -50,7 +50,7 @@ def dantzig42_d(arquivo) -> dict:
     for distancia in range(len(cidade)):
       cidade[distancia] = int(cidade[distancia])
 
-  return defineVizinhos(listaDistancias)
+  return defineVizinhos(listaDistancias), listaDistancias
 
 
 def five_d(arquivo) -> dict:
@@ -61,7 +61,7 @@ def five_d(arquivo) -> dict:
     for distancia in range(len(cidade)):
       cidade[distancia] = float(cidade[distancia])
 
-  return defineVizinhos(listaDistancias)
+  return defineVizinhos(listaDistancias), listaDistancias
 
 def fri26_d(arquivo) -> dict:
   listaDistancias = [cadaString.strip().split() for cadaString in arquivo.readlines()]
@@ -70,7 +70,7 @@ def fri26_d(arquivo) -> dict:
     for distancia in range(len(cidade)):
       cidade[distancia] = int(cidade[distancia])
 
-  return defineVizinhos(listaDistancias)
+  return defineVizinhos(listaDistancias), listaDistancias
 
 
 def gr17_d(arquivo) -> dict:
@@ -80,7 +80,7 @@ def gr17_d(arquivo) -> dict:
     for distancia in range(len(cidade)):
       cidade[distancia] = int(cidade[distancia])
 
-  return defineVizinhos(listaDistancias)
+  return defineVizinhos(listaDistancias), listaDistancias
 
 def P01_d(arquivo) -> dict:
   listaDistancias = [cadaString.strip().split() for cadaString in arquivo.readlines()]
@@ -89,7 +89,7 @@ def P01_d(arquivo) -> dict:
     for distancia in range(len(cidade)):
       cidade[distancia] = int(cidade[distancia])
 
-  return defineVizinhos(listaDistancias)
+  return defineVizinhos(listaDistancias), listaDistancias
 
 
 
@@ -107,7 +107,7 @@ def grafoTestes():
         dic[i + 1]['vizinhos'].append({"peso": lista[i][vizinhosVertice], "verticeAdjacente": vizinhosVertice + 1})
         dic[ i + 1]['quantidadeVizinhos'] += 1
     
-  print(dic)
+
 
 
 
