@@ -59,7 +59,7 @@ def five_d(arquivo) -> dict:
 
   for cidade in listaDistancias:
     for distancia in range(len(cidade)):
-      cidade[distancia] = int(float(cidade[distancia]))
+      cidade[distancia] = float(cidade[distancia])
 
   return defineVizinhos(listaDistancias)
 

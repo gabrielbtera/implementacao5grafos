@@ -1,13 +1,12 @@
 from time import time
 
 
-
 def vizinhoMinimoPeso(vertice):
     return min(vertice, key= lambda x: x[1])
 
 def findVertice(grafo, marcados, verticeAtual):
     vizinhos = grafo[verticeAtual]['Vizinhos']
-    novalista = [i for i in vizinhos if i[0] not in marcados]
+    novalista = [vizinho for vizinho in vizinhos if vizinho[0] not in marcados]
     return vizinhoMinimoPeso(novalista)
 
 def BellmoreNemHauser(graf, inicial) -> tuple:
