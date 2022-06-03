@@ -34,5 +34,5 @@ def BellmoreNemHauser(graf, inicial) -> tuple:
 
     tempo = time()-tempoinicio
 
-    return marcados, custoCaminho, tempo
+    return marcados, custoCaminho, round(tempo, 5)
     

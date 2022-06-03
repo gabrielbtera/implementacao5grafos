@@ -103,6 +103,6 @@ def twiceAround(grafo):
   custoCaminho = contaPesosCaminhos(cicloHamiltoniano, grafo)
   fim = time() - inicio
 
-  return cicloHamiltoniano, custoCaminho, fim
+  return cicloHamiltoniano, custoCaminho, round(fim, 5)
 
 
