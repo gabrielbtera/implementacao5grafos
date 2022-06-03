@@ -92,25 +92,3 @@ def P01_d(arquivo) -> dict:
   return defineVizinhos(listaDistancias), listaDistancias
 
 
-
-
-
-def grafoTestes():
-  lista = [[0, 5, 10, 0, 1], [5, 0, 0, 10, 1], [10, 0, 0, 2, 1], [0, 10, 2, 0, 1], [1, 1, 1, 1, 0]]
-
-  dic = {}
-  for i in range(len(lista)):
-    dic[i + 1] = {"vizinhos" : [], "marcado": False, "quantidadeVizinhos": 0}
-
-    for vizinhosVertice in range(len(lista[i])):
-      if lista[i][vizinhosVertice] != 0:
-        dic[i + 1]['vizinhos'].append({"peso": lista[i][vizinhosVertice], "verticeAdjacente": vizinhosVertice + 1})
-        dic[ i + 1]['quantidadeVizinhos'] += 1
-    
-
-
-
-
-
-
-

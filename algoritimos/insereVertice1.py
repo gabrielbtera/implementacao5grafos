@@ -1,7 +1,6 @@
 from time import time
 
-
-
+# Esta é uma função auxiliar que define os grafos para uma estrutura dicionario
 def defineVizinhos(grafo):
 
   dic = {}
@@ -18,6 +17,8 @@ def defineVizinhos(grafo):
   
   return dic
 
+
+# Rota Inicial 1 -> k -> 1, tal que k é o mais distante do vertice 1
 def vizinhoMaximoVertice(grafo, vertice):
     maiorDistanciaVertice =  max(grafo[vertice]["Vizinhos"], key=lambda x: x[1])
     caminhoInicial = [vertice, int(maiorDistanciaVertice[2])]
@@ -30,6 +31,8 @@ def vizinhoMaximoVertice(grafo, vertice):
 
     return caminhoInicial, tup[1]
 
+# faz um lista da menor distancia da rota de vertices que ainda não foram
+# visitados e retorna o vertice mais distante.
 def menorDistanciaRota(visitados, grafo):
     listaMenorPeso = []
    
@@ -38,12 +41,9 @@ def menorDistanciaRota(visitados, grafo):
             listaVizinhos = [(v,w,u) for v, w, u in grafo[j]["Vizinhos"] if u in visitados]
             minimo = min(listaVizinhos, key=lambda x: x[1])
             listaMenorPeso.append(minimo)
-
- 
-
     return max(listaMenorPeso, key=lambda x: x[1])
 
-
+# Responsável pela inserção do vertice j entre um i e k pertencentes a rota
 def inserir(grafo, vertice, visitados, custoAtual):
     vizinhos = [(v,w,u) for v, w, u in grafo[vertice]["Vizinhos"] if u in visitados]
     
@@ -64,14 +64,13 @@ def inserir(grafo, vertice, visitados, custoAtual):
     verticeExtraido = minimoExtraido[0]
     custoAtual += minimoExtraido[1]
    
-
     indice = visitados.index(verticeExtraido)
 
     visitados.insert(indice + 1, vertice)
 
     return custoAtual
 
-
+# Funcao auxiliar para calcular os pesos da rota encontrada.
 def calculaPesos(matriz, vizinhos):
     tamanhoMatriz = len(vizinhos)
     j = 1
@@ -89,31 +88,30 @@ def calculaPesos(matriz, vizinhos):
 
 
 
-
+# funcao principal da implementação. 
 def inserirUm(matriz, vertice=1):
-    grafo = defineVizinhos(matriz)
+    grafo = defineVizinhos(matriz) 
     qntVertices = len(matriz)
 
     inicio = time()
+
+    # Encontra  o vertice  mais distante do vertice inicial e pega o peso atual
+    # deles dois.
     visitados, pesoAtual = vizinhoMaximoVertice(grafo, vertice)
-    menorDistancia = menorDistanciaRota(visitados, grafo)
-    verticeMenor = menorDistancia[0]
+    
 
     while len(visitados) < qntVertices:
-        menorDistancia = menorDistanciaRota(visitados, grafo)
-        verticeMenor = menorDistancia[0]
-        pesoAtual += inserir(grafo, verticeMenor, visitados, pesoAtual)
-     
-
+      # Pega o maior vertice de uma lista de menores distancias
+      menorDistancia = menorDistanciaRota(visitados, grafo)
+      verticeMenor = menorDistancia[0]
+      # faz a insercao de j entre i e k
+      pesoAtual += inserir(grafo, verticeMenor, visitados, pesoAtual)
+    
+    # fecha o ciclo
     visitados.append(vertice)
 
     tempo = time() - inicio
 
     return  visitados, calculaPesos(matriz, visitados),  round(tempo, 5)
     
-
-
-    
-       
-
 

@@ -39,16 +39,6 @@ def algoritimoPrim(matrizAdjacencia):
   return arvore
 
 
-# g2 = [[0, 2, 1, 7, 4], [2, 0, 3, 5, 3], [1, 3, 0, 3, 2], [7, 5, 3, 0, 4], [4, 3, 2, 4, 0,]]
-
-# g3= [[0,1,4,9,8,2],
-# [1,0,5,5,7,6],
-# [4,5,0,10,7,4],
-# [9,5,10,0,1,7],
-# [8,7,7,1,0,3],
-# [2,6,4,7,3,0]]
-
-
 
 def duplicaArestas(arvore):
   listaeuleriano = []
