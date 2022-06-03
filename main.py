@@ -1,5 +1,6 @@
 import algoritimos.BellmoreENemhauser as heuristica1
 import algoritimos.TwiceAround as heuristica2
+import algoritimos.insereVertice1 as heuristica3
 
 import arquivosTestes.dadosFormatados as data
 
@@ -93,17 +94,48 @@ def twiceAround():
   p01 = heuristica2.twiceAround(data.P01_d(P01_d)[1])
   imprimeResultado(p01)
 
-
-
-
-
-
-  
-
-
-
-
-
-
-
 twiceAround()
+
+
+imprimeTitulo("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| \n")
+
+
+
+att48_d = open("./arquivosTestes/att48_d.txt", 'r')
+dantzig42_d = open('./arquivosTestes/dantzig42_d.txt', 'r')
+five_d = open("./arquivosTestes/five_d.txt", 'r')
+fri26_d = open("./arquivosTestes/fri26_d.txt", 'r')
+gr17_d =  open("./arquivosTestes/gr17_d.txt", 'r')
+P01_d = open("./arquivosTestes/P01_d.txt", 'r')
+
+
+
+imprimeTitulo("Resultado Insere Vertice 1 att48_d:")
+att48 = heuristica3.inserirUm(data.att48_d(att48_d)[1])
+imprimeResultado(att48)
+
+imprimeTitulo("Resultado Insere Vertice 1 dantzig42_d:")
+zig42 = heuristica3.inserirUm(data.dantzig42_d(dantzig42_d)[1])
+imprimeResultado(zig42)
+
+imprimeTitulo("Resultado  Insere Vertice 1 five_d:")
+five = heuristica3.inserirUm(data.five_d(five_d)[1])
+imprimeResultado(five)
+
+imprimeTitulo("Resultado Insere Vertice 1 fri26_d:")
+fri26 = heuristica3.inserirUm(data.fri26_d(fri26_d)[1])
+imprimeResultado(fri26)
+
+
+imprimeTitulo("Resultado Insere Vertice 1 gr17_d:")
+gr17 = heuristica3.inserirUm(data.gr17_d(gr17_d)[1])
+imprimeResultado(gr17)
+
+imprimeTitulo("Resultado Insere Vertice 1 P01_d:")
+p01 = heuristica3.inserirUm(data.P01_d(P01_d)[1])
+imprimeResultado(p01)
+
+
+
+
+
